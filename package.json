@@ -5,6 +5,7 @@
   "homepage": "https://valery-chumak.github.io/goit-react-hw-06-phonebook/",
   "dependencies": {
     "@emotion/styled": "^11.10.4",
+    "@redux-devtools/extension": "^3.2.3",
     "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",

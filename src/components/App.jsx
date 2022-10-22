@@ -1,26 +1,20 @@
-// import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
-// import { nanoid } from 'nanoid';
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Section from './Section/Section';
 import css from '../components/ContactForm/ContactForm.module.css';
-import { getContacts, getFilter } from 'redux/selectors';
-import { addContact, removeContact, setFilter } from 'redux/actions';
+import { addContact, removeContact } from 'redux/contacts/contacts-actions';
+import { setFilter } from 'redux/filter/filter-actions';
+import { getFilter } from 'redux/filter/filter-selectors';
+import { getContacts } from 'redux/contacts/contacts-selectors';
+import { getFilteredContacts } from 'redux/contacts/contacts-selectors';
 
 export default function App() {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(getFilteredContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-  // const [contacts, setContacts] = useState(() => {
-  //   const value = JSON.parse(localStorage.getItem('contacts'));
-  //   return value ?? [];
-  // });
-  // const [filter, setFilter] = useState('');
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
+
   const handleInputChange = event => {
     const { value } = event.target;
     dispatch(setFilter(value));
@@ -37,26 +31,11 @@ export default function App() {
     dispatch(action);
   };
 
-  const getFilteredContacts = () => {
-    if (!filter) {
-      return contacts;
-    }
-    const normalizedFilter = filter.toLocaleLowerCase();
-
-    const filteredContacts = contacts.filter(({ name }) => {
-      const normalizedName = name.toLocaleLowerCase();
-      const result = normalizedName.includes(normalizedFilter);
-      return result;
-    });
-    return filteredContacts;
-  };
-
   const onRemoveContact = id => {
     const action = removeContact(id);
     dispatch(action);
   };
 
-  const contactsFiltered = getFilteredContacts();
   return (
     <>
       <Section title="Phonebook">
@@ -75,7 +54,7 @@ export default function App() {
             onChange={handleInputChange}
           />
         </label>
-        <ContactList items={contactsFiltered} removeContact={onRemoveContact} />
+        <ContactList items={contacts} removeContact={onRemoveContact} />
       </Section>
     </>
   );
