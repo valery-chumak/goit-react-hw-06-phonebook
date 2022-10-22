@@ -7,7 +7,7 @@ import css from '../components/ContactForm/ContactForm.module.css';
 import { addContact, removeContact } from 'redux/contacts/contacts-actions';
 import { setFilter } from 'redux/filter/filter-actions';
 import { getFilter } from 'redux/filter/filter-selectors';
-import { getContacts } from 'redux/contacts/contacts-selectors';
+
 import { getFilteredContacts } from 'redux/contacts/contacts-selectors';
 
 export default function App() {
