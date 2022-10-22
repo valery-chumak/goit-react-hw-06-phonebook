@@ -1,0 +1,19 @@
+.button {
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.item{
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        color: black;
+        margin-bottom: 20px;
+        width: 350px;
+        padding: 10px;
+        justify-content: space-between;
+        border: 1px darkcyan dashed;
+}
