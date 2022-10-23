@@ -4,11 +4,9 @@ import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Section from './Section/Section';
 import css from '../components/ContactForm/ContactForm.module.css';
-// import { addContact, removeContact } from 'redux/contacts/contacts-actions';
 import { addContact, removeContact } from 'redux/contacts/contacts-slice';
 import { setFilter } from 'redux/filter/filter-slice';
 import { getFilter } from 'redux/filter/filter-selectors';
-
 import { getFilteredContacts } from 'redux/contacts/contacts-selectors';
 
 export default function App() {
